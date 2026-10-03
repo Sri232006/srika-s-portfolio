@@ -1,0 +1,236 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  :root {
+    --font-serif: 'Cormorant Garamond', Georgia, serif;
+    --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-script: 'Caveat', cursive;
+    --font-receipt: 'Courier Prime', ui-monospace, monospace;
+    --font-code: 'JetBrains Mono', ui-monospace, monospace;
+  }
+
+  body {
+    font-family: var(--font-sans);
+  }
+
+  h1, h2, h3, h4, .font-serif {
+    font-family: var(--font-serif);
+  }
+}
+
+.font-script {
+  font-family: var(--font-script);
+}
+
+.font-code {
+  font-family: var(--font-code);
+}
+
+@keyframes caretBlink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.animate-caret-blink {
+  animation: caretBlink 0.35s step-end 3 forwards;
+}
+
+
+
+/* Flip Hint Arrow Draw & Wiggle Animations */
+@keyframes drawArrowPath {
+  from {
+    stroke-dasharray: 80;
+    stroke-dashoffset: 80;
+  }
+  to {
+    stroke-dasharray: 80;
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes hintWiggle {
+  0%, 100% {
+    transform: rotate(-4deg);
+  }
+  25% {
+    transform: rotate(-7deg);
+  }
+  75% {
+    transform: rotate(-1deg);
+  }
+}
+
+.animate-draw-arrow-path {
+  stroke-dasharray: 80;
+  stroke-dashoffset: 80;
+  animation: drawArrowPath 1s ease-out forwards;
+}
+
+.animate-hint-wiggle {
+  animation: hintWiggle 0.6s ease-in-out 1.1s 2;
+}
+
+/* Slow Continuous Badge Rotation */
+@keyframes spinSlow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spinSlow 18s linear infinite;
+}
+
+/* Organic Blob Morph & Drift */
+@keyframes blobMorph {
+  0% {
+    transform: scale(1) translate(0px, 0px) rotate(0deg);
+  }
+  50% {
+    transform: scale(1.06) translate(8px, 10px) rotate(6deg);
+  }
+  100% {
+    transform: scale(0.96) translate(-6px, 6px) rotate(-5deg);
+  }
+}
+
+.animate-blob-morph {
+  animation: blobMorph 16s ease-in-out infinite alternate;
+}
+
+/* 3D Flip Card Utilities */
+.perspective-1000 {
+  perspective: 1000px;
+}
+.transform-style-3d {
+  transform-style: preserve-3d;
+}
+.backface-hidden {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
+
+/* Outline-to-Fill Wipe Animation for Hero Caption */
+@keyframes fillWipe {
+  0% {
+    background-size: 0% 100%;
+  }
+  100% {
+    background-size: 100% 100%;
+  }
+}
+
+.animate-fill-wipe {
+  -webkit-text-stroke: 1.5px #B36470;
+  color: transparent;
+  background-image: linear-gradient(to right, #B36470, #B36470);
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-size: 0% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: fillWipe 1.2s ease-out forwards;
+}
+
+.dark .animate-fill-wipe {
+  -webkit-text-stroke: 1.5px #E8A2AB;
+  background-image: linear-gradient(to right, #E8A2AB, #E8A2AB);
+}
+
+/* Self-Drawing SVG Border for Opening Intro Monogram (Step 1: 1.8s) */
+@keyframes introDrawRect {
+  0% {
+    stroke-dashoffset: 240;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+.animate-intro-draw {
+  stroke-dasharray: 240;
+  stroke-dashoffset: 240;
+  animation: introDrawRect 1.8s ease-in-out forwards;
+}
+
+/* Subtle Shine Sweep for NPTEL Elite Badge */
+@keyframes shineSweep {
+  0% {
+    transform: translateX(-100%) skewX(-20deg);
+  }
+  100% {
+    transform: translateX(250%) skewX(-20deg);
+  }
+}
+
+.animate-shine-sweep {
+  animation: shineSweep 1.4s ease-out forwards;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #E0B9C0;
+  border-radius: 4px;
+}
+.dark ::-webkit-scrollbar-thumb {
+  background: #4A3237;
+}
+
+/* Respect Reduced Motion Settings */
+@media (prefers-reduced-motion: reduce) {
+  .animate-print-slide {
+    clip-path: none !important;
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .animate-draw-arrow-path {
+    stroke-dashoffset: 0 !important;
+    animation: none !important;
+  }
+  .animate-hint-wiggle {
+    animation: none !important;
+  }
+  .animate-spin-slow,
+  .animate-blob-morph {
+    animation: none !important;
+  }
+  .animate-fill-wipe {
+    -webkit-text-stroke: 0px !important;
+    color: #B36470 !important;
+    background-size: 100% 100% !important;
+    animation: none !important;
+  }
+  .dark .animate-fill-wipe {
+    color: #E8A2AB !important;
+  }
+  .animate-draw-rect {
+    stroke-dashoffset: 0 !important;
+    animation: none !important;
+  }
+  .animate-shine-sweep {
+    animation: none !important;
+    display: none !important;
+  }
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
