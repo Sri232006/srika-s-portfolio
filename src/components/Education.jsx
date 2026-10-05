@@ -62,10 +62,6 @@ export default function Education() {
 
             <div className="pt-4 border-t border-[#E0B9C0]/20 dark:border-[#4A3237]/30 flex items-center justify-between text-[11px] font-mono text-[#7C6267] dark:text-[#C7B4B8]">
               <span>Undergraduate Program</span>
-              {/* Developer Comment Badge */}
-              <span className="text-[10px] text-[#B36470] dark:text-[#E8A2AB] bg-[#F6E8EA] dark:bg-[#3D262C] px-2 py-0.5 rounded">
-                CGPA spot reserved in code
-              </span>
             </div>
 
           </div>

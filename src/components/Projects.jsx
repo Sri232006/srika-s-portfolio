@@ -46,7 +46,7 @@ export const projectsData = [
     built: 'GPA calculator with real-time GPA and CGPA tracking.',
     result: 'Firebase used for authentication and cloud data storage.',
     github: 'https://github.com/Sri232006/GPAGENIUS/tree/main',
-    live: '[PLACEHOLDER: Add Live Demo Link]',
+    live: 'https://mini-project-675a8.web.app',
     statusTag: null,
     mockupIcon: Calculator,
     mockupLabel: 'GPA/CGPA Calculation Suite',
